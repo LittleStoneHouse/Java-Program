@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.servlet.mapper.RuneMapper">
+    <select id="getRunes" resultMap="runes" resultType="java.util.List">
+        select * from runes
+    </select>
+    <resultMap id="runes" type="rune">
+        <id column="rid" property="id"/>
+        <result column="rname" property="runeName"/>
+        <result column="r_weaponInfo" property="weapInfo"/>
+        <result column="r_armorinfo" property="armrInfo"/>
+        <result column="r_shieldinfo" property="shidInfo"/>
+    </resultMap>
+
+    <insert id="insertRune" parameterType="rune"
+        useGeneratedKeys="true" keyProperty="id">
+        insert into runes(rname, r_weaponinfo, r_armorinfo, r_shieldinfo) VALUES
+        (#{runeName},#{weapInfo},#{armrInfo},#{shidInfo})
+    </insert>
+</mapper>
